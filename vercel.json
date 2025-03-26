@@ -1,0 +1,61 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "Backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "Backend/public/**/*",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "Backend/server.js"
+        },
+        {
+            "src": "/login.html",
+            "dest": "Backend/public/login.html"
+        },
+        {
+            "src": "/registration.html",
+            "dest": "Backend/public/registration.html"
+        },
+        {
+            "src": "/about.html",
+            "dest": "Backend/public/HeamoScan/about.html"
+        },
+        {
+            "src": "/hbcalculation.html",
+            "dest": "Backend/public/HeamoScan/hbcalculation.html"
+        },
+        {
+            "src": "/index.html",
+            "dest": "Backend/public/HeamoScan/index.html"
+        },
+        {
+            "src": "/maintaining.html",
+            "dest": "Backend/public/HeamoScan/maintaining.html"
+        },
+        {
+            "src": "/HeamoScan/(.*)",
+            "dest": "Backend/public/HeamoScan/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "Backend/public/$1"
+        },
+        {
+            "src": "/",
+            "dest": "Backend/public/HeamoScan/index.html"
+        }
+    ],
+    "env": {
+        "MONGODB_URI": "@mongodb_uri",
+        "JWT_SECRET": "@jwt_secret",
+        "EMAIL_USER": "@email_user",
+        "EMAIL_PASS": "@email_pass"
+    }
+} 
